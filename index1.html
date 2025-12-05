@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeuses - Les Pionnières du Numérique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #e8d5f2 50%, #d5e8f7 100%);
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+
+        .flower {
+            position: fixed;
+            font-size: 2em;
+            opacity: 0.3;
+            animation: fall 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px 20px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(173, 216, 230, 0.3) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: 4.5em;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #9b59b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+            position: relative;
+        }
+
+        .main-title::before {
+            content: '✨';
+            position: absolute;
+            left: -60px;
+            animation: sparkle 2s infinite;
+        }
+
+        .main-title::after {
+            content: '✨';
+            position: absolute;
+            right: -60px;
+            animation: sparkle 2s infinite 1s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #9b59b6;
+            margin-bottom: 30px;
+            font-style: italic;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-description {
+            font-size: 1.2em;
+            line-height: 2;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #ff6b9d;
+            font-size: 2em;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: #c44569;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b9d, #c44569, #9b59b6);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .podcast-hero {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffeef8 100%);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 
+                0 20px 60px rgba(255, 107, 157, 0.2),
+                inset 0 0 60px rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podcast-hero::before {
+            content: '🎧';
+            position: absolute;
+            font-size: 15em;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .podcast-icon {
+            font-size: 5em;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: pulse-heart 2s infinite;
+        }
+
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .podcast-title {
+            font-size: 2.5em;
+            text-align: center;
+            color: #c44569;
+            margin-bottom: 20px;
+        }
+
+        .podcast-description {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .audio-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        audio {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .upload-area {
+            margin-top: 40px;
+            text-align: center;
+            padding: 50px;
+            border: 3px dashed #ff6b9d;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-area:hover {
+            background: rgba(255, 182, 193, 0.2);
+            border-color: #c44569;
+            transform: translateY(-5px);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: float-up-down 3s ease-in-out infinite;
+        }
+
+        @keyframes float-up-down {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .women-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .woman-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .woman-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b9d, #c44569, #9b59b6);
+        }
+
+        .woman-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(255, 107, 157, 0.3);
+        }
+
+        .woman-avatar {
+            font-size: 5em;
+            text-align: center;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 15px rgba(255, 107, 157, 0.3));
+        }
+
+        .woman-name {
+            font-size: 2em;
+            color: #c44569;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .woman-role {
+            text-align: center;
+            color: #9b59b6;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .woman-achievement {
+            color: #666;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .mission-card {
+            background: linear-gradient(135deg, #fff 0%, #ffeef8 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #ff6b9d;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 107, 157, 0.3);
+            border-left-color: #9b59b6;
+        }
+
+        .mission-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .mission-title {
+            font-size: 1.5em;
+            color: #c44569;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .mission-text {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #9b59b6 100%);
+            padding: 80px 40px;
+            border-radius: 30px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2d2d2d 0%, #4a4a4a 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 80px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-logo {
+            font-size: 2em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6b9d, #c44569, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transform: translateX(500px);
+            transition: transform 0.4s ease;
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5em;
+            }
+            
+            .main-title::before,
+            .main-title::after {
+                display: none;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .podcast-hero {
+                padding: 30px 20px;
+            }
+            
+            .women-grid,
+            .mission-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fleurs animées -->
+    <div id="flowers-container"></div>
+
+    <!-- Section Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">Femmes de haute gamme</h1>
+            <p class="subtitle">Les Pionnières du Numérique</p>
+            <p class="hero-description">
+                De l'ombre à la lumière, découvrez les femmes extraordinaires qui ont façonné le monde numérique. 
+                Leur code a changé l'histoire, leur voix mérite d'être entendue.
+            </p>
+            <button class="cta-button" onclick="document.getElementById('podcast-section').scrollIntoView({behavior: 'smooth'})">
+                🎧 Écouter leur histoire
+            </button>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </div>
+
+    <div class="container">
+        <!-- Section Podcast -->
+        <div class="section" id="podcast-section">
+            <div class="podcast-hero">
+                <div class="podcast-icon">🎙️</div>
+                <h2 class="podcast-title">Notre Podcast : Voix de Pionnières</h2>
+                <p class="podcast-description">
+                    Un voyage sonore de 3 minutes à travers les contributions remarquables des femmes dans le numérique 
+                    de Rania Toukebri, ingénieure aérospatiale tunisienne travaillant pour l'ESA. 
+                    découvrez comment ces visionnaires ont brisé les barrières et inspiré des générations.
+                </p>
+                
+             <video id="video-player" controls controlsList="nodownload" style="width: 100%; max-height: 500px; border-radius: 15px;">
+                        <source id="video-source" src="/podcast1.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture vidéo.
+                    </video>
+                    
+                    <div id="audio-info" style="margin-top: 15px; text-align: center; color: #888; font-size: 0.9em;">
+                        
+                    </div>
+                    <div id="audio-details" style="margin-top: 10px; text-align: center; color: #9b59b6; font-size: 0.95em;"></div>
+                </div>
+            </div>
+        </div>
+
+               
+
+        <!-- Section Pionnières -->
+        <div class="section">
+            <h2 class="section-title">👩‍💻 Nos inspirations</h2>
+            <div class="women-grid">
+                <div class="woman-card">
+                    <div class="woman-avatar">💡</div>
+                    <h3 class="woman-name">Ada Lovelace</h3>
+                    <p class="woman-role">Première Programmeuse (1843)</p>
+                    <p class="woman-achievement">
+                        Visionnaire qui a écrit le tout premier algorithme informatique pour la machine analytique de Charles Babbage, 
+                        un siècle avant l'invention de l'ordinateur moderne.
+                    </p>
+                </div>
+                
+                <div class="woman-card">
+                    <div class="woman-avatar">🚀</div>
+                    <h3 class="woman-name">Margaret Hamilton</h3>
+                    <p class="woman-role">Ingénieure Apollo 11 (1969)</p>
+                    <p class="woman-achievement">
+                        Directrice du département de génie logiciel de la NASA, son code informatique a permis aux astronautes 
+                        d'alunir avec succès et de revenir sains et saufs sur Terre.
+                    </p>
+                </div>
+                
+                <div class="woman-card">
+                    <div class="woman-avatar">🔐</div>
+                    <h3 class="woman-name">Hedy Lamarr</h3>
+                    <p class="woman-role">Inventrice WiFi/Bluetooth (1941)</p>
+                    <p class="woman-achievement">
+                        Actrice et inventrice géniale, elle a co-développé un système de communication par étalement de spectre, 
+                        technologie à la base du WiFi, GPS et Bluetooth d'aujourd'hui.
+                    </p>
+                </div>
+
+                <div class="woman-card">
+                    <div class="woman-avatar">💻</div>
+                    <h3 class="woman-name">Grace Hopper</h3>
+                    <p class="woman-role">Créatrice du COBOL (1959)</p>
+                    <p class="woman-achievement">
+                        Informaticienne pionnière qui a développé le premier compilateur et contribué à la création du langage COBOL,
+                        encore utilisé dans les systèmes bancaires aujourd'hui.
+                    </p>
+                </div>
+
+                
+
+               
+            </div>
+        </div>
+
+        <!-- Section Mission -->
+        <div class="section">
+            <h2 class="section-title">💜 Notre Mission</h2>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <div class="mission-icon">✨</div>
+                    <h3 class="mission-title">Valoriser</h3>
+                    <p class="mission-text">
+                        Mettre en lumière les contributions extraordinaires des femmes dans l'histoire de l'informatique
+                        et célébrer les talents féminins d'aujourd'hui.
+                    </p>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-icon">🌈</div>
+                    <h3 class="mission-title">Sensibiliser</h3>
+                    <p class="mission-text">
+                        Démontrer l'importance cruciale de la mixité dans les métiers du numérique pour créer 
+                        des technologies inclusives et innovantes.
+                    </p>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-icon">🚀</div>
+                    <h3 class="mission-title">Inspirer</h3>
+                    <p class="mission-text">
+                        Encourager les vocations féminines dans la tech en montrant que le numérique 
+                        a toujours été, et sera toujours, un domaine pour tous.
+                    </p>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-icon">🤝</div>
+                    <h3 class="mission-title">Unir</h3>
+                    <p class="mission-text">
+                        Créer une communauté solidaire qui promeut l'égalité, brise les stéréotypes 
+                        et ouvre les portes du numérique à toutes et tous.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Statistiques -->
+        <div class="stats-section">
+            <h2 style="font-size: 3em; margin-bottom: 20px;">📊 La Réalité d'Aujourd'hui</h2>
+            <p style="font-size: 1.3em; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+                Malgré leur contribution historique majeure, les femmes restent largement sous-représentées 
+                dans les métiers du numérique. Il est temps de changer cela !
+            </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">17%</div>
+                    <div class="stat-label">de femmes dans la tech</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50%</div>
+                    <div class="stat-label">objectif de mixité</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">de talents nécessaires</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">possibilités d'innovation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-logo">💜 ACDI • NUIT de l'INFO 2025</div>
+        <p style="font-size: 1.2em; margin: 20px 0;">
+            Association des Chefs et Cheffes des Départements Informatique de France
+        </p>
+        <p style="opacity: 0.8; margin-top: 30px;">
+            Ensemble, codons un avenir plus inclusif et diversifié 🌟
+        </p>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Génération de fleurs animées
+        const flowersContainer = document.getElementById('flowers-container');
+        const flowerEmojis = ['🌸', '🌺', '🌷', '🌹', '💐', '🏵️', '💮'];
+        
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            flower.style.animationDelay = Math.random() * 5 + 's';
+            flowersContainer.appendChild(flower);
+            
+            setTimeout(() => flower.remove(), 20000);
+        }
+        
+        setInterval(createFlower, 2000);
+        for (let i = 0; i < 10; i++) createFlower();
+
+        // Gestion du podcast
+        const fileInput = document.getElementById('file-input');
+        const fileName = document.getElementById('file-name');
+        const audioDetails = document.getElementById('audio-details');
+        const audioPlayer = document.getElementById('podcast-player');
+        const audioSource = document.getElementById('audio-source');
+        const toast = document.getElementById('toast');
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024 * 1024) {
+                return (bytes / 1024).toFixed(1) + ' KB';
+            }
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            
+            if (file) {
+                // Vérifier si c'est un fichier audio
+                if (!file.type.startsWith('audio/')) {
+                    showToast('❌ Veuillez sélectionner un fichier audio valide');
+                    fileName.textContent = '⚠️ Fichier non valide';
+                    audioDetails.textContent = '';
+                    return;
+                }
+
+                // Vérifier la taille (max 100 MB)
+                const fileSizeMB = file.size / (1024 * 1024);
+                if (fileSizeMB > 100) {
+                    showToast('❌ Fichier trop volumineux (max 100 MB)');
+                    fileName.textContent = `⚠️ Fichier trop grand : ${fileSizeMB.toFixed(1)} MB`;
+                    audioDetails.textContent = '';
+                    return;
+                }
+
+                // Afficher les informations du fichier
+                fileName.innerHTML = `
+                    ✅ <strong>${file.name}</strong><br>
+                    📦 Taille : ${formatFileSize(file.size)}
+                `;
+                
+                // Créer l'URL du fichier
+                const url = URL.createObjectURL(file);
+                audioSource.src = url;
+                audioPlayer.load();
+                
+                // Afficher la durée une fois chargée
+                audioPlayer.addEventListener('loadedmetadata', function() {
+                    const duration = audioPlayer.duration;
+                    const durationMinutes = duration / 60;
+                    
+                    let durationText = `⏱️ Durée : ${formatTime(duration)}`;
+                    
+                    if (durationMinutes > 5) {
+                        durationText += ' <span style="color: #ff9800;">(⚠️ Dépasse 5 min recommandées)</span>';
+                    } else {
+                        durationText += ' <span style="color: #27c93f;">✓</span>';
+                    }
+                    
+                    audioDetails.innerHTML = durationText;
+                }, { once: true });
+                
+                showToast('✨ Enregistrement chargé avec succès !');
+                
+                // Scroller vers le lecteur
+                setTimeout(() => {
+                    audioPlayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
+        });
+
+        audioPlayer.addEventListener('play', () => {
+            showToast('🎧 Lecture en cours...');
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            showToast('💜 Merci d\'avoir écouté !');
+        });
+
+        audioPlayer.addEventListener('error', function(e) {
+            showToast('❌ Erreur lors de la lecture');
+            console.error('Erreur audio:', e);
+        });
+
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.woman-card, .mission-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
