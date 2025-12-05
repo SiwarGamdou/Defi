@@ -1,6 +1,6 @@
 # Codeuses - Les Pionnières du Numérique
 
-Bienvenue sur **Codeuses**, un site web dédié à mettre en lumière les femmes pionnières du numérique et leurs contributions remarquables à l'histoire de l'informatique.
+Bienvenue sur notre **site podcast**, un site web dédié à mettre en lumière les femmes pionnières du numérique et leurs contributions remarquables à l'histoire de l'informatique.
 
 Ce projet a été réalisé dans le cadre de **la Nuit de l'INFO 2025** par l'association **ACDI** (Association des Chefs et Cheffes des Départements Informatique de France).
 
@@ -40,7 +40,4 @@ Le site présente :
 4. **Responsive design** : adapté aux écrans mobiles et tablettes.
 5. **Sections animées au scroll** pour améliorer l'expérience utilisateur.
 
----
-
-## 📂 Structure du projet
 
